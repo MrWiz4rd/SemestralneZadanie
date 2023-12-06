@@ -102,10 +102,17 @@ public class Main {
 		    	 String DatabazoveHeslo = rs.getString("password");
 		    	 
 		    	 	if(username.equals(meno) && DatabazoveHeslo.equals(heslo)) {
-		    	 		System.out.print("Prihlaseny!!" + username);
+		    	 		System.out.print("Bol si prihlaseny vitaj " + username);
 		    	 		isLoggedIn = true;
-		    		 
+		    	 		con.close();
+		    
+		    	 		
 		    	 		if(isLoggedIn == true) {
+		    	 			char naspak = 0;
+		    	 			while(true) {
+		    	 			System.out.print("\n\n1 - Zobrazit knihy v databaze\n");
+		    	 			System.out.print("2 - Pridat knihu\n");
+		    	 			System.out.print("3 - Odhlasit sa\n");
 		    	 			cislo = scanner.nextInt();
 		    	 			switch(cislo) {
 		    	 				case 1:
@@ -114,9 +121,19 @@ public class Main {
 		    	 				case 2:
 		    	 					knihy();
 		    	 					break;
+		    	 				case 3:
+		    	 					naspak = 1;
+		    	 					break;
+		    	 					
 		    	 				default: 
 		    	 					System.out.print("Zadal si nepravny vstup");
 		    	 				}
+		    	 			if(naspak == 1) {
+		    	 				isLoggedIn = false;
+		    	 				con.close();
+		    	 				break;
+		    	 			}
+		    	 		}
 		    	 		}
 		    		
 		    		 break;
@@ -124,7 +141,7 @@ public class Main {
 		    	
 		    	else{
 		    	//System.out.print("NEPrihlaseny!!" + username);
-		    		isLoggedIn = false;
+		    		
 		    	}
 		    	
 		     }
