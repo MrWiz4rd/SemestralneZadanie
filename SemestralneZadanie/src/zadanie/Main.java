@@ -124,6 +124,7 @@ public class Main {
 		    	
 		    	else{
 		    	//System.out.print("NEPrihlaseny!!" + username);
+		    		isLoggedIn = false;
 		    	}
 		    	
 		     }
