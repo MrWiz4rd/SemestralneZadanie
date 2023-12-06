@@ -9,12 +9,12 @@ import java.sql.SQLException;
 public class Main {
 	public static void main(String [] args) throws SQLException, InterruptedException {
 		Scanner scanner = new Scanner(System.in);
+		System.out.print("Virtualna biblioteka pre pokracovanie stlacte cislo:\n");
 		while (true) {  
-		
-		System.out.print("\n\nVirtualna biblioteka pre pokracovanie stlacte cislo:\n");
+	
 		System.out.print("1 - Prihlasenie\n");
 		System.out.print("2 - Registracia\n");
-		System.out.print("3 - Zbierka knih\n");
+		//3System.out.print("3 - Zbierka knih\n");
 
 	    int cislo = scanner.nextInt();
 	      
@@ -26,7 +26,7 @@ public class Main {
 			registracia();
 			break;
 		default:
-			System.out.print("Zadali ste zle cislo\n");
+			System.out.print("Zadali ste zle cislo, skuste znova\n");
 		
 			
 		}
@@ -86,9 +86,9 @@ public class Main {
 		boolean isLoggedIn = false;
 		int cislo;
 	
-		System.out.print("username: ");
+		System.out.print("Username: ");
 		String meno = scanner.nextLine();
-		System.out.print("heslo: ");
+		System.out.print("Heslo: ");
 		String heslo = scanner.nextLine();
 		
 		try {
@@ -101,31 +101,29 @@ public class Main {
 		    	 String username = rs.getString("username");
 		    	 String DatabazoveHeslo = rs.getString("password");
 		    	 
-		    	 if(username.equals(meno) && DatabazoveHeslo.equals(heslo)) {
-		    		 System.out.print("Prihlaseny!!" + username);
-		    		 isLoggedIn = true;
+		    	 	if(username.equals(meno) && DatabazoveHeslo.equals(heslo)) {
+		    	 		System.out.print("Prihlaseny!!" + username);
+		    	 		isLoggedIn = true;
 		    		 
-		    		 if(isLoggedIn == true) {
-		    			 cislo = scanner.nextInt();
-		    			 switch(cislo) {
-		    			 case 1:
-		    				 zbierka();
-		    				 break;
-		    			 case 2:
-		    				 knihy();
-		    				 break;
-		    			 default: 
-		    				 System.out.print("Zadal si nepravny vstup");
-		    				
-		    			 }
-		    		 }
+		    	 		if(isLoggedIn == true) {
+		    	 			cislo = scanner.nextInt();
+		    	 			switch(cislo) {
+		    	 				case 1:
+		    	 					zbierka();
+		    	 					break;
+		    	 				case 2:
+		    	 					knihy();
+		    	 					break;
+		    	 				default: 
+		    	 					System.out.print("Zadal si nepravny vstup");
+		    	 				}
+		    	 		}
 		    		
 		    		 break;
 		    	 }
 		    	
 		    	else{
 		    	//System.out.print("NEPrihlaseny!!" + username);
-		    		
 		    	}
 		    	
 		     }
@@ -154,6 +152,7 @@ public class Main {
 			//Connection con = Server.connect();			
 			PridanieUzivatelov(meno, heslo, email);
 			System.out.print("Uzivatel vytvoreny!\n\n");
+		
 			
 		}
 		else {
