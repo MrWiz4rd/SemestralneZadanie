@@ -58,7 +58,7 @@ public class Main {
 		    	 String nazov = rs.getString("Nazov");
 		    	 String autor = rs.getString("Autor");
 		    	 String zaner = rs.getString("Zaner");
-		    	 int rok = rs.getInt("Zaner");
+		    	 int rok = rs.getInt("Rok");
 		    	
 		    	 if (nazov.isEmpty() || autor.isEmpty() || zaner.isEmpty()) {
 		    		 
@@ -89,11 +89,14 @@ public class Main {
 		Connection con = Server.connect();
 		PreparedStatement citaj = null;
 		ResultSet rs = null;
+		boolean isLoggedIn = false;
+		int cislo;
 	
 		System.out.print("username: ");
 		String meno = scanner.nextLine();
 		System.out.print("heslo: ");
 		String heslo = scanner.nextLine();
+		
 		try {
 		     String sql = "SELECT * FROM Pouzivatelia";
 		     citaj = con.prepareStatement(sql);
@@ -104,17 +107,35 @@ public class Main {
 		    	 String username = rs.getString("username");
 		    	 String DatabazoveHeslo = rs.getString("password");
 		    	 
-		    	 if(meno.equals(username) && heslo.equals(DatabazoveHeslo)) {
-		    		 System.out.print("Prihlaseny!!");
+		    	 if(username.equals(meno) && DatabazoveHeslo.equals(heslo)) {
+		    		 System.out.print("Prihlaseny!!" + username);
+		    		 isLoggedIn = true;
+		    		 
+		    		 if(isLoggedIn == true) {
+		    			 cislo = scanner.nextInt();
+		    			 switch(cislo) {
+		    			 case 1:
+		    				 zbierka();
+		    				 break;
+		    			 case 2:
+		    				 knihy();
+		    				 break;
+		    			 default: 
+		    				 System.out.print("Zadal si nepravny vstup");
+		    				
+		    			 }
+		    		 }
+		    		
 		    		 break;
 		    	 }
 		    	
-		    	 else if(!meno.equals(username) && !heslo.equals(DatabazoveHeslo)) {
-		    		System.out.print("NEPrihlaseny!!");
-		    		break;
+		    	else{
+		    	//System.out.print("NEPrihlaseny!!" + username);
+		    		
 		    	}
-		    	 rs.close();
+		    	
 		     }
+		     rs.close();
 		     
 		}	catch(SQLException e) {
 				System.out.println(e+"");
