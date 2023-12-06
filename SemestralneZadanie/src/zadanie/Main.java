@@ -25,18 +25,12 @@ public class Main {
 		case 2:
 			registracia();
 			break;
-		case 3:
-			zbierka();
-			break;
-		case 4:
-			knihy();
-			break;
 		default:
 			System.out.print("Zadali ste zle cislo\n");
 		
 			
 		}
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 	}
 	}
 	
