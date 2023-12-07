@@ -194,11 +194,14 @@ public class Main {
 	    	 		}
 	    		
 	    		 break;
-		    	//System.out.print("NEPrihlaseny!!" + username);
+		    	
 		    		
 		    	}
+		    	 	
 		    	
 		     }
+		     System.out.print("Neprihlaseny\n");
+	    	 	
 
 		     con.close();
 		     
