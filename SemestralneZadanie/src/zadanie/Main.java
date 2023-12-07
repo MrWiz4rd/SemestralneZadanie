@@ -127,11 +127,12 @@ public class Main {
 		    	 					knihy();
 		    	 					break;
 		    	 				case 3:
-		    	 					OdstranenieKnihy();
+		    	 					odstranenieKnihy();
 		    	 					System.out.printf("Kniha bola uspesne odstranena!\n");
 		    	 					break;
 		    	 				case 4:
-		    	 					//odstranitpouzivatela();
+		    	 					odstraneniePouzivatela();
+		    	 					System.out.printf("Uzivatel zmazany!\n");
 		    	 					break;
 		    	 				case 5:
 		    	 					naspat = 1;
@@ -216,7 +217,7 @@ public class Main {
 }
 	
 	
-	private static void OdstranenieKnihy() throws SQLException {
+	private static void odstranenieKnihy() throws SQLException {
 		Scanner scanner = new Scanner(System.in);
 		System.out.print("Zadaj nazov knihy ktoru chces odstranit: ");
 			String nazov = scanner.nextLine();
@@ -238,6 +239,31 @@ public class Main {
 			System.out.println(e+"");
 		}
 	}
+	
+	private static void odstraneniePouzivatela() throws SQLException {
+		Scanner scanner = new Scanner(System.in);
+		System.out.print("Zadaj meno pouzivatela ktoreho chces odstranit: ");
+			String meno = scanner.nextLine();
+			odstranpouzivatela(meno);
+	}
+	
+	
+	
+	
+	private static void odstranpouzivatela(String meno) throws SQLException {
+		Connection con = Server.connect();
+	    PreparedStatement zmaz = null;
+	    try {
+	        String sql = "delete from Pouzivatelia WHERE username = ?";
+	        zmaz = con.prepareStatement(sql);
+	        zmaz.setString(1, meno);
+	        zmaz.execute();
+	      
+		} catch(Exception e) {
+			System.out.println(e+"");
+		}
+	}
+	
 	
 	
 	private static void registracia() throws SQLException {
