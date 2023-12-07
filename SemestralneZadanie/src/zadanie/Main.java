@@ -14,7 +14,6 @@ public class Main {
 	
 		System.out.print("1 - Prihlasenie\n");
 		System.out.print("2 - Registracia\n");
-		//3System.out.print("3 - Zbierka knih\n");
 
 	    int cislo = scanner.nextInt();
 	      
