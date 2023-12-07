@@ -102,7 +102,7 @@ public class Main {
 		    	 String DatabazoveHeslo = rs.getString("password");
 		    	 int uid = rs.getInt("uid");
 		    	 
-		    	 	if(username.equals(meno) && DatabazoveHeslo.equals(heslo) && uid == 1) {
+		    	 	if(username.equals(meno) && DatabazoveHeslo.equals(heslo) && uid == 1) { // podla uid zistujem kto je admin a kto klasicky pouzivatel
 		    	 		System.out.print("Bol si prihlaseny vitaj admin " + username);
 		    	 		isLoggedIn = true;
 		    	 		con.close();
