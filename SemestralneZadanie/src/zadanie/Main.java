@@ -34,7 +34,7 @@ public class Main {
 	}
 	
 	
-	private static void zbierka() throws SQLException{
+	private static void zbierkaKnih() throws SQLException{
 		Connection con = Server.connect();
 		PreparedStatement citaj = null;
 		ResultSet rs = null;
@@ -64,6 +64,34 @@ public class Main {
 		    	 System.out.println("Zaner: " + zaner);
 		    	 System.out.println("Rok vydania: " + rok);
 		     
+		     }
+		   
+		     
+		    
+		} catch(SQLException e) {
+			System.out.println(e.toString());
+		}
+	}
+	
+	
+	
+	private static void pouzivatelia() throws SQLException{
+		Connection con = Server.connect();
+		PreparedStatement citaj = null;
+		ResultSet rs = null;
+		 
+		try {
+		     String sql = "SELECT * FROM Pouzivatelia";
+		     citaj = con.prepareStatement(sql);
+		     rs = citaj.executeQuery();
+		    
+		    
+		     System.out.println("Všetci pouzivatelia v databaze");
+		     
+		     while(rs.next()) {
+		    	 String username = rs.getString("username");	 
+		    	 System.out.println("\nUsername: " + username);
+
 		     }
 		   
 		     
@@ -111,29 +139,39 @@ public class Main {
 		    	 			char naspat = 0;
 		    	 			while(true) {
 		    	 			System.out.print("\n\n1 - Zobrazit knihy v databaze\n");
-		    	 			System.out.print("2 - Pridat knihu\n");
-		    	 			System.out.print("3 - Odstranit knihu\n");
-		    	 			System.out.print("4 - Odstranit pouzivatela\n");
-		    	 			System.out.print("5 - Odhlasit sa\n");
+		    	 			System.out.print("2 - Zobrazit pouzivatelov\n");
+		    	 			System.out.print("3 - Pridat knihu\n");
+		    	 			System.out.print("4 - Pridat pouzivatela\n");
+		    	 			System.out.print("5 - Odstranit knihu\n");
+		    	 			System.out.print("6 - Odstranit pouzivatela\n");
+		    	 			System.out.print("7 - Odhlasit sa\n");
 		    	 			cislo = scanner.nextInt();
 		    	 			switch(cislo) { // ADMIN
 		    	 				case 1:
-		    	 					zbierka();
+		    	 					zbierkaKnih();
 		    	 					System.out.print("\nPre pokracovanie stlac hocijake cislo");
 		    	 					scanner.nextInt();
 		    	 					break;
 		    	 				case 2:
-		    	 					knihy();
+		    	 					pouzivatelia();
+		    	 					System.out.print("\nPre pokracovanie stlac hocijake cislo");
+		    	 					scanner.nextInt();
 		    	 					break;
 		    	 				case 3:
+		    	 					knihy();
+		    	 					break;
+		    	 				case 4:
+		    	 					registracia();
+		    	 					break;
+		    	 				case 5:
 		    	 					odstranenieKnihy();
 		    	 					System.out.printf("Kniha bola uspesne odstranena!\n");
 		    	 					break;
-		    	 				case 4:
+		    	 				case 6:
 		    	 					odstraneniePouzivatela();
-		    	 					System.out.printf("Uzivatel zmazany!\n");
+		    	 					System.out.printf("Uzivatel odstraneny!\n");
 		    	 					break;
-		    	 				case 5:
+		    	 				case 7:
 		    	 					naspat = 1;
 		    	 					System.out.print("Bol si odhlaseny\n");
 		    	 					break;
@@ -146,7 +184,7 @@ public class Main {
 		    	 				con.close();
 		    	 				break;
 		    	 			}
-		    	 			Thread.sleep(2000);
+		    	 			Thread.sleep(1000);
 		    	 		}
 		    	 		}
 		    		
@@ -169,23 +207,23 @@ public class Main {
 	    	 			cislo = scanner.nextInt();
 	    	 			switch(cislo) { // obcajny pouzivatel
 	    	 				case 1:
-	    	 					zbierka();
+	    	 					zbierkaKnih();
 	    	 					System.out.print("\nPre pokracovanie stlac hocico");
 	    	 					scanner.nextInt();
 	    	 					break;
 	    	 				case 2:
 	    	 					knihy();
-	    	 					Thread.sleep(2000);
+	    	 					Thread.sleep(1000);
 	    	 					break;
 	    	 				case 3:
 	    	 					naspat = 1;
 	    	 					System.out.print("Bol si odhlaseny\n");
-	    	 					Thread.sleep(2000);
+	    	 					Thread.sleep(1000);
 	    	 					break;
 	    	 					
 	    	 				default: 
 	    	 					System.out.print("Zadal si nepravny vstup");
-	    	 					Thread.sleep(2000);
+	    	 					Thread.sleep(1000);
 	    	 				}
 	    	 			if(naspat == 1) {
 	    	 				isLoggedIn = false;
@@ -241,7 +279,7 @@ public class Main {
 	
 	private static void odstraneniePouzivatela() throws SQLException {
 		Scanner scanner = new Scanner(System.in);
-		System.out.print("Zadaj meno pouzivatela ktoreho chces odstranit: ");
+		System.out.print("Zadaj username pouzivatela ktoreho chces odstranit: ");
 			String meno = scanner.nextLine();
 			odstranpouzivatela(meno);
 	}
