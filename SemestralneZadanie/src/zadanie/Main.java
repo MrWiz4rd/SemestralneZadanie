@@ -113,7 +113,9 @@ public class Main {
 		    	 			while(true) {
 		    	 			System.out.print("\n\n1 - Zobrazit knihy v databaze\n");
 		    	 			System.out.print("2 - Pridat knihu\n");
-		    	 			System.out.print("3 - Odhlasit sa\n");
+		    	 			System.out.print("3 - Odstranit knihu\n");
+		    	 			System.out.print("4 - Odstranit pouzivatela\n");
+		    	 			System.out.print("5 - Odhlasit sa\n");
 		    	 			cislo = scanner.nextInt();
 		    	 			switch(cislo) { // ADMIN
 		    	 				case 1:
@@ -123,6 +125,12 @@ public class Main {
 		    	 					knihy();
 		    	 					break;
 		    	 				case 3:
+		    	 					odstranitknihu();
+		    	 					break;
+		    	 				case 4:
+		    	 					odstranitpouzivatela();
+		    	 					break;
+		    	 				case 5:
 		    	 					naspat = 1;
 		    	 					System.out.print("Bol si odhlaseny\n");
 		    	 					break;
@@ -194,6 +202,17 @@ public class Main {
 		}
 		
 	}
+	
+	
+	private static void odstranitpouzivatela() {
+		
+	}
+	
+	
+	private static void odstranitknihu() {
+		
+	}
+	
 	
 	private static void registracia() throws SQLException {
 		Scanner scanner = new Scanner(System.in);
