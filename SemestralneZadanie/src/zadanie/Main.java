@@ -120,15 +120,18 @@ public class Main {
 		    	 			switch(cislo) { // ADMIN
 		    	 				case 1:
 		    	 					zbierka();
+		    	 					System.out.print("\nPre pokracovanie stlac hocijake cislo");
+		    	 					scanner.nextInt();
 		    	 					break;
 		    	 				case 2:
 		    	 					knihy();
 		    	 					break;
 		    	 				case 3:
-		    	 					odstranitknihu();
+		    	 					OdstranenieKnihy();
+		    	 					System.out.printf("Kniha bola uspesne odstranena!\n");
 		    	 					break;
 		    	 				case 4:
-		    	 					odstranitpouzivatela();
+		    	 					//odstranitpouzivatela();
 		    	 					break;
 		    	 				case 5:
 		    	 					naspat = 1;
@@ -213,13 +216,27 @@ public class Main {
 }
 	
 	
-	private static void odstranitpouzivatela() {
+	private static void OdstranenieKnihy() throws SQLException {
+		Scanner scanner = new Scanner(System.in);
+		System.out.print("Zadaj nazov knihy ktoru chces odstranit: ");
+			String nazov = scanner.nextLine();
+			odstranitknihu(nazov);
 		
 	}
 	
 	
-	private static void odstranitknihu() {
-		
+	private static void odstranitknihu(String nazov) throws SQLException {
+		Connection con = Server.connect();
+	    PreparedStatement zmaz = null;
+	    try {
+	        String sql = "delete from Knihy WHERE Nazov = ?";
+	        zmaz = con.prepareStatement(sql);
+	        zmaz.setString(1, nazov);
+	        zmaz.execute();
+	      
+		} catch(Exception e) {
+			System.out.println(e+"");
+		}
 	}
 	
 	
