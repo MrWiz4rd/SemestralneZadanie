@@ -108,7 +108,7 @@ public class Main {
 		    	 		con.close();
 		    
 		    	 		
-		    	 		if(isLoggedIn == true) {
+		    	 		if(isLoggedIn) {
 		    	 			char naspat = 0;
 		    	 			while(true) {
 		    	 			System.out.print("\n\n1 - Zobrazit knihy v databaze\n");
@@ -156,7 +156,7 @@ public class Main {
 	    	 		con.close();
 	    
 	    	 		
-	    	 		if(isLoggedIn == true) {
+	    	 		if(isLoggedIn) {
 	    	 			char naspat = 0;
 	    	 			while(true) {
 	    	 			System.out.print("\n\n1 - Zobrazit knihy v databaze\n");
