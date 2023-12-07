@@ -77,7 +77,7 @@ public class Main {
 	
 	
 	
-	private static void prihlasenie() throws SQLException {
+	private static void prihlasenie() throws SQLException, InterruptedException {
 		Scanner scanner = new Scanner(System.in);
 		
 		Connection con = Server.connect();
@@ -100,9 +100,10 @@ public class Main {
 		     while(rs.next()) {
 		    	 String username = rs.getString("username");
 		    	 String DatabazoveHeslo = rs.getString("password");
+		    	 int uid = rs.getInt("uid");
 		    	 
-		    	 	if(username.equals(meno) && DatabazoveHeslo.equals(heslo)) {
-		    	 		System.out.print("Bol si prihlaseny vitaj " + username);
+		    	 	if(username.equals(meno) && DatabazoveHeslo.equals(heslo) && uid == 1) {
+		    	 		System.out.print("Bol si prihlaseny vitaj Admin " + username);
 		    	 		isLoggedIn = true;
 		    	 		con.close();
 		    
@@ -123,6 +124,7 @@ public class Main {
 		    	 					break;
 		    	 				case 3:
 		    	 					naspak = 1;
+		    	 					System.out.print("Bol si odhlaseny\n");
 		    	 					break;
 		    	 					
 		    	 				default: 
@@ -133,13 +135,51 @@ public class Main {
 		    	 				con.close();
 		    	 				break;
 		    	 			}
+		    	 			Thread.sleep(2000);
 		    	 		}
 		    	 		}
 		    		
 		    		 break;
 		    	 }
 		    	
-		    	else{
+		    	else if(username.equals(meno) && DatabazoveHeslo.equals(heslo)) {
+	    	 		System.out.print("Bol si prihlaseny vitaj pouzivatel " + username);
+	    	 		isLoggedIn = true;
+	    	 		con.close();
+	    
+	    	 		
+	    	 		if(isLoggedIn == true) {
+	    	 			char naspak = 0;
+	    	 			while(true) {
+	    	 			System.out.print("\n\n1 - Zobrazit knihy v databaze\n");
+	    	 			System.out.print("2 - Pridat knihu\n");
+	    	 			System.out.print("3 - Odhlasit sa\n");
+	    	 			cislo = scanner.nextInt();
+	    	 			switch(cislo) {
+	    	 				case 1:
+	    	 					zbierka();
+	    	 					break;
+	    	 				case 2:
+	    	 					knihy();
+	    	 					break;
+	    	 				case 3:
+	    	 					naspak = 1;
+	    	 					System.out.print("Bol si odhlaseny\n");
+	    	 					break;
+	    	 					
+	    	 				default: 
+	    	 					System.out.print("Zadal si nepravny vstup");
+	    	 				}
+	    	 			if(naspak == 1) {
+	    	 				isLoggedIn = false;
+	    	 				con.close();
+	    	 				break;
+	    	 			}
+	    	 			Thread.sleep(2000);
+	    	 		}
+	    	 		}
+	    		
+	    		 break;
 		    	//System.out.print("NEPrihlaseny!!" + username);
 		    		
 		    	}
