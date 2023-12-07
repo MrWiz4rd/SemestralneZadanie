@@ -223,7 +223,7 @@ public class Main {
 	    	 			switch(cislo) { // obcajny pouzivatel
 	    	 				case 1:
 	    	 					zbierkaKnih();
-	    	 					System.out.print("\nPre pokracovanie stlac hocico");
+	    	 					System.out.print("\nPre pokracovanie stlac hocijake cislo");
 	    	 					scanner.nextInt();
 	    	 					break;
 	    	 				case 2:
