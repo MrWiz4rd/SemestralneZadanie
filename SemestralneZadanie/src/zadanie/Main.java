@@ -158,6 +158,7 @@ public class Main {
 	    	 		
 	    	 		if(isLoggedIn) {
 	    	 			char naspat = 0;
+	    	 			
 	    	 			while(true) {
 	    	 			System.out.print("\n\n1 - Zobrazit knihy v databaze\n");
 	    	 			System.out.print("2 - Pridat knihu\n");
@@ -166,24 +167,29 @@ public class Main {
 	    	 			switch(cislo) { // obcajny pouzivatel
 	    	 				case 1:
 	    	 					zbierka();
+	    	 					System.out.print("\nPre pokracovanie stlac hocico");
+	    	 					scanner.nextInt();
 	    	 					break;
 	    	 				case 2:
 	    	 					knihy();
+	    	 					Thread.sleep(2000);
 	    	 					break;
 	    	 				case 3:
 	    	 					naspat = 1;
 	    	 					System.out.print("Bol si odhlaseny\n");
+	    	 					Thread.sleep(2000);
 	    	 					break;
 	    	 					
 	    	 				default: 
 	    	 					System.out.print("Zadal si nepravny vstup");
+	    	 					Thread.sleep(2000);
 	    	 				}
 	    	 			if(naspat == 1) {
 	    	 				isLoggedIn = false;
 	    	 				con.close();
 	    	 				break;
 	    	 			}
-	    	 			Thread.sleep(2000);
+	    	 			
 	    	 		}
 	    	 		}
 	    		
@@ -194,7 +200,7 @@ public class Main {
 		    	
 		     }
 
-		     rs.close();
+		     con.close();
 		     
 		}	catch(SQLException e) {
 				System.out.println(e+"");
