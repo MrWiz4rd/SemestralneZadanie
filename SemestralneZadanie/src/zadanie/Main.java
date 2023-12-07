@@ -199,9 +199,9 @@ public class Main {
 		}	catch(SQLException e) {
 				System.out.println(e+"");
 		
-		}
-		
 	}
+		
+}
 	
 	
 	private static void odstranitpouzivatela() {
