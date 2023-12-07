@@ -149,7 +149,7 @@ public class Main {
 	    
 	    	 		
 	    	 		if(isLoggedIn == true) {
-	    	 			char naspak = 0;
+	    	 			char naspat = 0;
 	    	 			while(true) {
 	    	 			System.out.print("\n\n1 - Zobrazit knihy v databaze\n");
 	    	 			System.out.print("2 - Pridat knihu\n");
@@ -163,14 +163,14 @@ public class Main {
 	    	 					knihy();
 	    	 					break;
 	    	 				case 3:
-	    	 					naspak = 1;
+	    	 					naspat = 1;
 	    	 					System.out.print("Bol si odhlaseny\n");
 	    	 					break;
 	    	 					
 	    	 				default: 
 	    	 					System.out.print("Zadal si nepravny vstup");
 	    	 				}
-	    	 			if(naspak == 1) {
+	    	 			if(naspat == 1) {
 	    	 				isLoggedIn = false;
 	    	 				con.close();
 	    	 				break;
