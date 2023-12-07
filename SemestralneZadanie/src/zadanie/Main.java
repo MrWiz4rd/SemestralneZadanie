@@ -103,19 +103,19 @@ public class Main {
 		    	 int uid = rs.getInt("uid");
 		    	 
 		    	 	if(username.equals(meno) && DatabazoveHeslo.equals(heslo) && uid == 1) {
-		    	 		System.out.print("Bol si prihlaseny vitaj Admin " + username);
+		    	 		System.out.print("Bol si prihlaseny vitaj admin " + username);
 		    	 		isLoggedIn = true;
 		    	 		con.close();
 		    
 		    	 		
 		    	 		if(isLoggedIn == true) {
-		    	 			char naspak = 0;
+		    	 			char naspat = 0;
 		    	 			while(true) {
 		    	 			System.out.print("\n\n1 - Zobrazit knihy v databaze\n");
 		    	 			System.out.print("2 - Pridat knihu\n");
 		    	 			System.out.print("3 - Odhlasit sa\n");
 		    	 			cislo = scanner.nextInt();
-		    	 			switch(cislo) {
+		    	 			switch(cislo) { // ADMIN
 		    	 				case 1:
 		    	 					zbierka();
 		    	 					break;
@@ -123,14 +123,14 @@ public class Main {
 		    	 					knihy();
 		    	 					break;
 		    	 				case 3:
-		    	 					naspak = 1;
+		    	 					naspat = 1;
 		    	 					System.out.print("Bol si odhlaseny\n");
 		    	 					break;
 		    	 					
 		    	 				default: 
 		    	 					System.out.print("Zadal si nepravny vstup");
 		    	 				}
-		    	 			if(naspak == 1) {
+		    	 			if(naspat == 1) {
 		    	 				isLoggedIn = false;
 		    	 				con.close();
 		    	 				break;
@@ -155,7 +155,7 @@ public class Main {
 	    	 			System.out.print("2 - Pridat knihu\n");
 	    	 			System.out.print("3 - Odhlasit sa\n");
 	    	 			cislo = scanner.nextInt();
-	    	 			switch(cislo) {
+	    	 			switch(cislo) { // obcajny pouzivatel
 	    	 				case 1:
 	    	 					zbierka();
 	    	 					break;
@@ -185,6 +185,7 @@ public class Main {
 		    	}
 		    	
 		     }
+
 		     rs.close();
 		     
 		}	catch(SQLException e) {
