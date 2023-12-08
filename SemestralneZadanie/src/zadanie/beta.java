@@ -15,21 +15,21 @@ public class Main {
 		System.out.print("1 - Prihlasenie\n");
 		System.out.print("2 - Registracia\n");
 
-	    int cislo = scanner.nextInt();
+	    String cislo = scanner.nextLine();
 	      
 		switch(cislo) {
-		case 1: 
+		case "1": 
 			prihlasenie();
 			break;
-		case 2:
+		case "2":
 			registracia();
 			break;
 		default:
-			System.out.print("Zadali ste zle cislo, skuste znova\n");
+			System.out.print("Zadali ste zly vstup, skuste znova\n");
 		
 			
 		}
-		Thread.sleep(2000);
+		Thread.sleep(1000);
 	}
 	}
 	
@@ -114,7 +114,7 @@ public class Main {
 		PreparedStatement citaj = null;
 		ResultSet rs = null;
 		boolean isLoggedIn = false;
-		int cislo;
+		String cislo;
 	
 		System.out.print("Username: ");
 		String meno = scanner.nextLine();
@@ -148,19 +148,19 @@ public class Main {
 		    	 			System.out.print("5 - Odstranit knihu\n");
 		    	 			System.out.print("6 - Odstranit pouzivatela\n");
 		    	 			System.out.print("7 - Odhlasit sa\n");
-		    	 			cislo = scanner.nextInt();
+		    	 			cislo = scanner.nextLine();
 		    	 			switch(cislo) { // ADMIN
-		    	 				case 1:
+		    	 				case "1":
 		    	 					zbierkaKnih();
 		    	 					System.out.print("\nPre pokracovanie stlac hocijake cislo");
-		    	 					scanner.nextInt();
+		    	 					scanner.nextLine();
 		    	 					break;
-		    	 				case 2:
+		    	 				case "2":
 		    	 					pouzivatelia();
 		    	 					System.out.print("\nPre pokracovanie stlac hocijake cislo");
-		    	 					scanner.nextInt();
+		    	 					scanner.nextLine();
 		    	 					break;
-		    	 				case 3:
+		    	 				case "3":
 		    	 					Scanner scanner2 = new Scanner(System.in);
 		    	 					System.out.print("Nazov knihy: ");
 		    	 					String nazov = scanner2.nextLine();
@@ -175,18 +175,18 @@ public class Main {
 		    	 					  
 		    	 					  System.out.print("Kniha pridana!");
 		    	 					break;
-		    	 				case 4:
+		    	 				case "4":
 		    	 					registracia();
 		    	 					break;
-		    	 				case 5:
+		    	 				case "5":
 		    	 					odstranenieKnihy();
 		    	 					System.out.printf("Kniha bola uspesne odstranena!\n");
 		    	 					break;
-		    	 				case 6:
+		    	 				case "6":
 		    	 					odstraneniePouzivatela();
 		    	 					System.out.printf("Uzivatel odstraneny!\n");
 		    	 					break;
-		    	 				case 7:
+		    	 				case "7":
 		    	 					naspat = 1;
 		    	 					System.out.print("Bol si odhlaseny\n");
 		    	 					break;
@@ -219,14 +219,14 @@ public class Main {
 	    	 			System.out.print("\n\n1 - Zobrazit knihy v databaze\n");
 	    	 			System.out.print("2 - Pridat knihu\n");
 	    	 			System.out.print("3 - Odhlasit sa\n");
-	    	 			cislo = scanner.nextInt();
+	    	 			cislo = scanner.nextLine();
 	    	 			switch(cislo) { // obcajny pouzivatel
-	    	 				case 1:
+	    	 				case "1":
 	    	 					zbierkaKnih();
 	    	 					System.out.print("\nPre pokracovanie stlac hocijake cislo");
-	    	 					scanner.nextInt();
+	    	 					scanner.nextLine();
 	    	 					break;
-	    	 				case 2:
+	    	 				case "2":
 	    	 					Scanner scanner2 = new Scanner(System.in);
 	    	 					System.out.print("Nazov knihy: ");
 	    	 					String nazov = scanner2.nextLine();
@@ -242,7 +242,7 @@ public class Main {
 	    	 					System.out.print("Kniha pridana!");
 	    	 					Thread.sleep(1000);
 	    	 					break;
-	    	 				case 3:
+	    	 				case "3":
 	    	 					naspat = 1;
 	    	 					System.out.print("Bol si odhlaseny\n");
 	    	 					Thread.sleep(1000);
@@ -357,25 +357,7 @@ public class Main {
 	
 	
 
-private static void knihy() throws SQLException {
-	
-    Scanner scanner = new Scanner(System.in);
-    
-    System.out.print("Nazov knihy: ");
-	String nazov = scanner.nextLine();
-	System.out.print("Autor knihy: ");
-	String autor = scanner.nextLine();
-	System.out.print("Zaner knihy ");
-	String zaner = scanner.nextLine();
-	System.out.print("Rok vydania knihy ");
-	int rok = scanner.nextInt();
-	  
-	//PridanieKnihy(nazov, autor, zaner, rok, username); 
-	  
-	  System.out.print("Kniha pridana!");
-    
- 
-}
+
 
 
 private static void PridanieKnihy(String nazov, String autor, String zaner, int rok, String pridal) throws SQLException {
