@@ -1,4 +1,4 @@
-# SemestralneZadanie - Dokumentácia
+# SemestralneZadanie - Dokumentácia - © Roman Duraník
 Tento program slúži ako bibliotéka, kde si použivatelia môžu pridávať knihy, ktoré vlastnia.
 
 Class main: - Po spustení programu program dá na výber z dvoch možností, prihlásenie pre registrovaných používateľov alebo registrácia pre nových používateľov.
